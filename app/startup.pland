@@ -1,0 +1,4 @@
+var domClass = require "dojo/dom-class";
+
+domClass.add(document.body, "claro");
+

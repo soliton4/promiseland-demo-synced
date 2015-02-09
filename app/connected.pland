@@ -1,0 +1,95 @@
+
+class type sync all SyncDemo {
+  
+  var a: "xxx",
+    
+  event: var (var data){  
+    console.log("event: ");
+    console.log(data);
+  }
+  
+};
+
+
+// top scope
+SyncDemo demoVar = new SyncDemo();
+
+
+function setVar (SyncDemo par) frame "server" {
+  
+  demoVar = par;
+  
+};
+
+
+SyncDemo* getVar () frame "server" {
+  
+  return demoVar;
+  
+};
+
+
+() exclusive "client" {
+  
+  
+  var TextBox = require "dijit/form/TextBox";
+  var Button = require "dijit/form/Button";
+  
+  var tb = new TextBox();
+  tb.placeAt(document.body);
+  tb.startup();
+  
+  var getBtn = new Button({
+    label: "get obj",
+    onClick: (){
+      demoVar = *getVar();
+      tb.set("value", demoVar.a);
+    }
+  });
+  getBtn.placeAt(document.body);
+  getBtn.startup();
+  
+
+  var setBtn = new Button({
+    label: "set obj",
+    onClick: (){
+      setVar(demoVar);
+    }
+  });
+  setBtn.placeAt(document.body);
+  setBtn.startup();
+
+  var setMemberBtn = new Button({
+    label: "set member",
+    onClick: (){
+      demoVar.a = tb.get("value");
+    }
+  });
+  setMemberBtn.placeAt(document.body);
+  setMemberBtn.startup();
+
+  var readMemberBtn = new Button({
+    label: "read member",
+    onClick: (){
+      tb.set("value", demoVar.a);
+    }
+  });
+  readMemberBtn.placeAt(document.body);
+  readMemberBtn.startup();
+  
+  
+  var eventTb = new TextBox();
+  eventTb.placeAt(document.body);
+  eventTb.startup();
+  
+  var eventBtn = new Button({
+    label: "call event",
+    onClick: (){
+      demoVar.event(eventTb.get("value"));
+    }
+  });
+  eventBtn.placeAt(document.body);
+  eventBtn.startup();
+  
+  
+}();

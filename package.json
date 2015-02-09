@@ -1,0 +1,23 @@
+{
+  "name": "promiseland-demo-synced",
+  "version": "0.0.1",
+  "author": {
+    "name": "Matthias Behrens",
+    "email": "matthias.behrens@gmail.com"
+  },
+  "description": "demo project for synced objects",
+  "main": "index.js"
+  , "dependencies" : {
+    "promiseland-webframework" :  "0.1.6",
+    "promiseland": "0.0.18",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soliton4/promiseland-demo-synced"
+  },
+  "license": "bsd",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "readmeFilename": "README.md"
+}

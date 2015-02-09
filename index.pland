@@ -1,0 +1,26 @@
+try{
+  var Fw = require "promiseland-webframework";
+  var fw = new Fw({
+    load: "app/startup",
+    loadOnConnect: "app/connected",
+    requireAuth: false,
+    session: false,
+    dirs: [{
+      client: "/app",
+      server: __dirname + "/app/"
+    }, {
+      client: "/dojo",
+      server: __dirname + "/dojo/"
+    }, {
+      client: "/dijit",
+      server: __dirname + "/dijit/"
+    }],
+    css: ["dijit/themes/claro/claro.css"]
+  });
+  fw.listen(3004);
+}catch(e){
+  console.log(e);
+};
+
+//require "./test/test";
+require "./app/connected"; // module must be laoded on server to work
