@@ -9,7 +9,7 @@
   "main": "index.js"
   , "dependencies" : {
     "promiseland-webframework" :  "0.1.6",
-    "promiseland": "0.0.18",
+    "promiseland": "0.0.18"
   },
   "repository": {
     "type": "git",
