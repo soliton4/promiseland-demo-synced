@@ -24,3 +24,4 @@ try{
 
 //require "./test/test";
 require "./app/connected"; // module must be laoded on server to work
+require "./app/loading"; // module must be laoded on server to work
